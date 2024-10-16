@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epic Eats Fine Dine</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-overlay">
+            <h1>WELCOME TO EPIC EATS FINE DINE</h1>
+            <p>Where great taste meets elegance!</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Veg Pizza Section -->
+        <h2>Veg Pizzas</h2>
+        <div class="form-group">
+            <img src="images/veg-pizza.jpg" alt="Veg Pizzas" class="category-img">
+            <label>Select Veg Pizza Types and Quantity:</label>
+            <label>Margherita Pizza</label>
+            <input type="number" id="margheritaPizzaQty" min="0" value="0">
+            <label>Farmhouse Pizza</label>
+            <input type="number" id="farmhousePizzaQty" min="0" value="0">
+            <!-- ... other pizza items -->
+        </div>
+
+        <!-- Non-Veg Pizza Section -->
+        <h2>Non-Veg Pizzas</h2>
+        <div class="form-group">
+            <img src="images/nonveg-pizza.jpg" alt="Non-Veg Pizzas" class="category-img">
+            <label>Select Non-Veg Pizza Types and Quantity:</label>
+            <label>Chicken Dominator Pizza</label>
+            <input type="number" id="chickenPizzaQty" min="0" value="0">
+            <!-- ... other pizza items -->
+        </div>
+
+        <!-- Veg Burger Section -->
+        <h2>Veg Burgers</h2>
+        <div class="form-group">
+            <img src="images/veg-burger.jpg" alt="Veg Burgers" class="category-img">
+            <label>Select Veg Burger Types and Quantity:</label>
+            <label>Aloo Tikki Burger</label>
+            <input type="number" id="alooTikkiBurgerQty" min="0" value="0">
+            <!-- ... other burger items -->
+        </div>
+
+        <!-- Other sections similar to above -->
+
+        <!-- Generate Bill Button -->
+        <button type="button" onclick="generateBill()">Generate Bill</button>
+
+        <!-- Bill Summary Section -->
+        <div id="billSummary" class="summary"></div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
