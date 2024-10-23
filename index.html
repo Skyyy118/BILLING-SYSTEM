@@ -6,12 +6,62 @@
     <title>Epic Eats - Food Ordering System</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
     <script>
+        let cart = [];
+
+        // Function to show specific page
         function showPage(pageId) {
             // Hide all pages
             document.querySelectorAll('.page').forEach(page => page.style.display = 'none');
             // Show the selected page
             document.getElementById(pageId).style.display = 'block';
+
+            // If the order summary page is shown, update the order summary dynamically
+            if (pageId === 'summary') {
+                updateOrderSummary();
+            }
         }
+
+        // Function to add item to the cart
+        function addToCart(itemName, itemPrice) {
+            const existingItem = cart.find(item => item.name === itemName);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ name: itemName, price: itemPrice, quantity: 1 });
+            }
+            alert(`${itemName} added to cart!`);
+        }
+
+        // Function to update the order summary page
+        function updateOrderSummary() {
+            const tbody = document.getElementById('order-summary-body');
+            tbody.innerHTML = ''; // Clear existing rows
+
+            let total = 0;
+
+            cart.forEach(item => {
+                const row = document.createElement('tr');
+
+                const itemNameCell = document.createElement('td');
+                itemNameCell.textContent = item.name;
+
+                const itemQuantityCell = document.createElement('td');
+                itemQuantityCell.textContent = item.quantity;
+
+                const itemPriceCell = document.createElement('td');
+                itemPriceCell.textContent = `₹${item.price}`;
+
+                row.appendChild(itemNameCell);
+                row.appendChild(itemQuantityCell);
+                row.appendChild(itemPriceCell);
+                tbody.appendChild(row);
+
+                total += item.price * item.quantity;
+            });
+
+            document.getElementById('total-price').textContent = `₹${total}`;
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             showPage('home'); // Show homepage by default
         });
@@ -61,52 +111,52 @@
                     <div>
                         <h3>Burger</h3>
                         <p>Juicy beef burger with fresh lettuce, tomato, and cheese. ₹1600</p>
-                        <button>Add to Cart</button>
+                        <button onclick="addToCart('Burger', 1600)">Add to Cart</button>
                     </div>
                     <div>
                         <h3>Margherita Pizza</h3>
                         <p>Classic pizza with mozzarella, tomato, and fresh basil. ₹1200</p>
-                        <button>Add to Cart</button>
+                        <button onclick="addToCart('Margherita Pizza', 1200)">Add to Cart</button>
                     </div>
                     <div>
                         <h3>Caesar Salad</h3>
                         <p>Crisp romaine, Caesar dressing, croutons, and parmesan. ₹800</p>
-                        <button>Add to Cart</button>
+                        <button onclick="addToCart('Caesar Salad', 800)">Add to Cart</button>
                     </div>
                     <div>
                         <h3>Sushi Rolls</h3>
                         <p>Fresh sushi rolls with salmon, avocado, and cucumber. ₹1500</p>
-                        <button>Add to Cart</button>
+                        <button onclick="addToCart('Sushi Rolls', 1500)">Add to Cart</button>
                     </div>
                     <div>
                         <h3>Grilled Chicken Wrap</h3>
                         <p>Grilled chicken, veggies, and hummus in a wrap. ₹900</p>
-                        <button>Add to Cart</button>
+                        <button onclick="addToCart('Grilled Chicken Wrap', 900)">Add to Cart</button>
                     </div>
                     <div>
                         <h3>Fries</h3>
                         <p>Crispy golden fries with a side of ketchup. ₹320</p>
-                        <button>Add to Cart</button>
+                        <button onclick="addToCart('Fries', 320)">Add to Cart</button>
                     </div>
                     <div>
                         <h3>Fruit Smoothie</h3>
                         <p>A refreshing smoothie made with mixed berries and bananas. ₹1120</p>
-                        <button>Add to Cart</button>
+                        <button onclick="addToCart('Fruit Smoothie', 1120)">Add to Cart</button>
                     </div>
                     <div>
                         <h3>Coffee</h3>
                         <p>Freshly brewed coffee with the option of milk and sugar. ₹240</p>
-                        <button>Add to Cart</button>
+                        <button onclick="addToCart('Coffee', 240)">Add to Cart</button>
                     </div>
                     <div>
                         <h3>Soft Drink</h3>
                         <p>Your choice of soda: Coke, Sprite, or Fanta. ₹160</p>
-                        <button>Add to Cart</button>
+                        <button onclick="addToCart('Soft Drink', 160)">Add to Cart</button>
                     </div>
                     <div>
                         <h3>Chocolate Cake</h3>
                         <p>Rich chocolate cake with a side of whipped cream. ₹480</p>
-                        <button>Add to Cart</button>
+                        <button onclick="addToCart('Chocolate Cake', 480)">Add to Cart</button>
                     </div>
                 </div>
             </section>
@@ -130,32 +180,13 @@
                             <th>Price</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>Burger</td>
-                            <td>2</td>
-                            <td>₹1600</td>
-                        </tr>
-                        <tr>
-                            <td>Fries</td>
-                            <td>1</td>
-                            <td>₹320</td>
-                        </tr>
-                        <tr>
-                            <td>Fruit Smoothie</td>
-                            <td>2</td>
-                            <td>₹1120</td>
-                        </tr>
-                        <tr>
-                            <td>Chocolate Cake</td>
-                            <td>1</td>
-                            <td>₹480</td>
-                        </tr>
+                    <tbody id="order-summary-body">
+                        <!-- Items will be dynamically added here -->
                     </tbody>
                     <tfoot>
                         <tr>
                             <th colspan="2">Total</th>
-                            <th>₹3520</th>
+                            <th id="total-price">₹0</th>
                         </tr>
                     </tfoot>
                 </table>
