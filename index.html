@@ -4,68 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Epic Eats - Food Ordering System</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-    <script>
-        let cart = [];
-
-        // Function to show specific page
-        function showPage(pageId) {
-            // Hide all pages
-            document.querySelectorAll('.page').forEach(page => page.style.display = 'none');
-            // Show the selected page
-            document.getElementById(pageId).style.display = 'block';
-
-            // If the order summary page is shown, update the order summary dynamically
-            if (pageId === 'summary') {
-                updateOrderSummary();
-            }
-        }
-
-        // Function to add item to the cart
-        function addToCart(itemName, itemPrice) {
-            const existingItem = cart.find(item => item.name === itemName);
-            if (existingItem) {
-                existingItem.quantity++;
-            } else {
-                cart.push({ name: itemName, price: itemPrice, quantity: 1 });
-            }
-            alert(`${itemName} added to cart!`);
-        }
-
-        // Function to update the order summary page
-        function updateOrderSummary() {
-            const tbody = document.getElementById('order-summary-body');
-            tbody.innerHTML = ''; // Clear existing rows
-
-            let total = 0;
-
-            cart.forEach(item => {
-                const row = document.createElement('tr');
-
-                const itemNameCell = document.createElement('td');
-                itemNameCell.textContent = item.name;
-
-                const itemQuantityCell = document.createElement('td');
-                itemQuantityCell.textContent = item.quantity;
-
-                const itemPriceCell = document.createElement('td');
-                itemPriceCell.textContent = `₹${item.price}`;
-
-                row.appendChild(itemNameCell);
-                row.appendChild(itemQuantityCell);
-                row.appendChild(itemPriceCell);
-                tbody.appendChild(row);
-
-                total += item.price * item.quantity;
-            });
-
-            document.getElementById('total-price').textContent = `₹${total}`;
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            showPage('home'); // Show homepage by default
-        });
-    </script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -82,120 +21,57 @@
     </header>
 
     <!-- Home Page -->
-    <main id="home" class="page container" style="display: none;">
-        <div class="grid">
-            <section>
-                <hgroup>
-                    <h2>Welcome to Epic Eats!</h2>
-                    <h3>Delicious food, delivered fast.</h3>
-                </hgroup>
-                <p>At Epic Eats, we bring you the best food options for every taste! Explore our exciting menu and place your order in a few simple steps.</p>
-                <figure>
-                    <img src="https://files.oaiusercontent.com/file-1X5sYiPOfpPt4xPde2WbQO0h?se=2024-10-23T03%3A02%3A15Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D1ab24191-4521-4aae-b3d9-9de61ad5a703.webp&sig=ZUpk8NsYNTRNavBowGERiV54GqZACiYlngqSOlhvURI%3D" alt="Epic Eats food spread">
-                    <figcaption><a href="#">Visit Epic Eats</a></figcaption>
-                </figure>
-            </section>
-        </div>
+    <main id="home" class="page container">
+        <h2>Welcome to Epic Eats!</h2>
+        <p>Explore our exciting menu and place your order in a few simple steps.</p>
     </main>
 
     <!-- Menu Page -->
     <main id="menu" class="page container" style="display: none;">
+        <h2>Menu</h2>
         <div class="grid">
-            <section>
-                <hgroup>
-                    <h2>Menu & Offers</h2>
-                    <h3>Select your favorites</h3>
-                </hgroup>
-                <p>Explore our delicious food and drink options below and add them to your cart.</p>
-                <div class="grid">
-                    <div>
-                        <h3>Burger</h3>
-                        <p>Juicy beef burger with fresh lettuce, tomato, and cheese. ₹1600</p>
-                        <button onclick="addToCart('Burger', 1600)">Add to Cart</button>
-                    </div>
-                    <div>
-                        <h3>Margherita Pizza</h3>
-                        <p>Classic pizza with mozzarella, tomato, and fresh basil. ₹1200</p>
-                        <button onclick="addToCart('Margherita Pizza', 1200)">Add to Cart</button>
-                    </div>
-                    <div>
-                        <h3>Caesar Salad</h3>
-                        <p>Crisp romaine, Caesar dressing, croutons, and parmesan. ₹800</p>
-                        <button onclick="addToCart('Caesar Salad', 800)">Add to Cart</button>
-                    </div>
-                    <div>
-                        <h3>Sushi Rolls</h3>
-                        <p>Fresh sushi rolls with salmon, avocado, and cucumber. ₹1500</p>
-                        <button onclick="addToCart('Sushi Rolls', 1500)">Add to Cart</button>
-                    </div>
-                    <div>
-                        <h3>Grilled Chicken Wrap</h3>
-                        <p>Grilled chicken, veggies, and hummus in a wrap. ₹900</p>
-                        <button onclick="addToCart('Grilled Chicken Wrap', 900)">Add to Cart</button>
-                    </div>
-                    <div>
-                        <h3>Fries</h3>
-                        <p>Crispy golden fries with a side of ketchup. ₹320</p>
-                        <button onclick="addToCart('Fries', 320)">Add to Cart</button>
-                    </div>
-                    <div>
-                        <h3>Fruit Smoothie</h3>
-                        <p>A refreshing smoothie made with mixed berries and bananas. ₹1120</p>
-                        <button onclick="addToCart('Fruit Smoothie', 1120)">Add to Cart</button>
-                    </div>
-                    <div>
-                        <h3>Coffee</h3>
-                        <p>Freshly brewed coffee with the option of milk and sugar. ₹240</p>
-                        <button onclick="addToCart('Coffee', 240)">Add to Cart</button>
-                    </div>
-                    <div>
-                        <h3>Soft Drink</h3>
-                        <p>Your choice of soda: Coke, Sprite, or Fanta. ₹160</p>
-                        <button onclick="addToCart('Soft Drink', 160)">Add to Cart</button>
-                    </div>
-                    <div>
-                        <h3>Chocolate Cake</h3>
-                        <p>Rich chocolate cake with a side of whipped cream. ₹480</p>
-                        <button onclick="addToCart('Chocolate Cake', 480)">Add to Cart</button>
-                    </div>
-                </div>
-            </section>
+            <div class="menu-item">
+                <h3>Burger</h3>
+                <p>Price: ₹1600</p>
+                <button onclick="addToCart('Burger', 1600)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <h3>Margherita Pizza</h3>
+                <p>Price: ₹1200</p>
+                <button onclick="addToCart('Margherita Pizza', 1200)">Add to Cart</button>
+            </div>
+            <!-- Add more menu items as needed -->
         </div>
     </main>
 
     <!-- Order Summary Page -->
     <main id="summary" class="page container" style="display: none;">
-        <div class="grid">
-            <section>
-                <hgroup>
-                    <h2>Order Summary</h2>
-                    <h3>Thank you for ordering from Epic Eats!</h3>
-                </hgroup>
-                <p>We appreciate your order. Here is a summary of the items you selected:</p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Item</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody id="order-summary-body">
-                        <!-- Items will be dynamically added here -->
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th colspan="2">Total</th>
-                            <th id="total-price">₹0</th>
-                        </tr>
-                    </tfoot>
-                </table>
-                <p>Your order will be delivered to you shortly. Enjoy your meal!</p>
-            </section>
-        </div>
+        <h2>Order Summary</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="order-summary-body">
+                <!-- Cart items will be dynamically added here -->
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="2">Total</th>
+                    <th id="total-price">₹0</th>
+                </tr>
+            </tfoot>
+        </table>
     </main>
+
     <footer class="container">
         <small><a href="#">Privacy Policy</a> • <a href="#">Terms of Service</a></small>
     </footer>
+
+    <!-- Include external JS file -->
+    <script src="cart.js"></script>
 </body>
 </html>
