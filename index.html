@@ -3,59 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Epic Eats Fine Dine</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Epic Eats - Food Ordering System</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => page.style.display = 'none');
+            // Show the selected page
+            document.getElementById(pageId).style.display = 'block';
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            showPage('home'); // Show homepage by default
+        });
+    </script>
 </head>
 <body>
-    <div class="hero">
-        <div class="hero-overlay">
-            <h1>WELCOME TO EPIC EATS FINE DINE</h1>
-            <p>Where great taste meets elegance!</p>
+    <header>
+        <nav class="container-fluid">
+            <ul>
+                <li><strong>Epic Eats</strong></li>
+            </ul>
+            <ul>
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('menu')">Menu</a></li>
+                <li><a href="#" onclick="showPage('summary')">Order Summary</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home Page -->
+    <main id="home" class="page container" style="display: none;">
+        <div class="grid">
+            <section>
+                <hgroup>
+                    <h2>Welcome to Epic Eats!</h2>
+                    <h3>Delicious food, delivered fast.</h3>
+                </hgroup>
+                <p>At Epic Eats, we bring you the best food options for every taste! Explore our exciting menu and place your order in a few simple steps.</p>
+                <figure>
+                    <img src="https://files.oaiusercontent.com/file-1X5sYiPOfpPt4xPde2WbQO0h?se=2024-10-23T03%3A02%3A15Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D1ab24191-4521-4aae-b3d9-9de61ad5a703.webp&sig=ZUpk8NsYNTRNavBowGERiV54GqZACiYlngqSOlhvURI%3D" alt="Epic Eats food spread">
+                    <figcaption><a href="#">Visit Epic Eats</a></figcaption>
+                </figure>
+            </section>
         </div>
-    </div>
+    </main>
 
-    <div class="container">
-        <!-- Veg Pizza Section -->
-        <h2>Veg Pizzas</h2>
-        <div class="form-group">
-            <img src="images/veg-pizza.jpg" alt="Veg Pizzas" class="category-img">
-            <label>Select Veg Pizza Types and Quantity:</label>
-            <label>Margherita Pizza</label>
-            <input type="number" id="margheritaPizzaQty" min="0" value="0">
-            <label>Farmhouse Pizza</label>
-            <input type="number" id="farmhousePizzaQty" min="0" value="0">
-            <!-- ... other pizza items -->
+    <!-- Menu Page -->
+    <main id="menu" class="page container" style="display: none;">
+        <div class="grid">
+            <section>
+                <hgroup>
+                    <h2>Menu & Offers</h2>
+                    <h3>Select your favorites</h3>
+                </hgroup>
+                <p>Explore our delicious food and drink options below and add them to your cart.</p>
+                <div class="grid">
+                    <div>
+                        <h3>Burger</h3>
+                        <p>Juicy beef burger with fresh lettuce, tomato, and cheese. ₹1600</p>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div>
+                        <h3>Margherita Pizza</h3>
+                        <p>Classic pizza with mozzarella, tomato, and fresh basil. ₹1200</p>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div>
+                        <h3>Caesar Salad</h3>
+                        <p>Crisp romaine, Caesar dressing, croutons, and parmesan. ₹800</p>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div>
+                        <h3>Sushi Rolls</h3>
+                        <p>Fresh sushi rolls with salmon, avocado, and cucumber. ₹1500</p>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div>
+                        <h3>Grilled Chicken Wrap</h3>
+                        <p>Grilled chicken, veggies, and hummus in a wrap. ₹900</p>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div>
+                        <h3>Fries</h3>
+                        <p>Crispy golden fries with a side of ketchup. ₹320</p>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div>
+                        <h3>Fruit Smoothie</h3>
+                        <p>A refreshing smoothie made with mixed berries and bananas. ₹1120</p>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div>
+                        <h3>Coffee</h3>
+                        <p>Freshly brewed coffee with the option of milk and sugar. ₹240</p>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div>
+                        <h3>Soft Drink</h3>
+                        <p>Your choice of soda: Coke, Sprite, or Fanta. ₹160</p>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div>
+                        <h3>Chocolate Cake</h3>
+                        <p>Rich chocolate cake with a side of whipped cream. ₹480</p>
+                        <button>Add to Cart</button>
+                    </div>
+                </div>
+            </section>
         </div>
+    </main>
 
-        <!-- Non-Veg Pizza Section -->
-        <h2>Non-Veg Pizzas</h2>
-        <div class="form-group">
-            <img src="images/nonveg-pizza.jpg" alt="Non-Veg Pizzas" class="category-img">
-            <label>Select Non-Veg Pizza Types and Quantity:</label>
-            <label>Chicken Dominator Pizza</label>
-            <input type="number" id="chickenPizzaQty" min="0" value="0">
-            <!-- ... other pizza items -->
+    <!-- Order Summary Page -->
+    <main id="summary" class="page container" style="display: none;">
+        <div class="grid">
+            <section>
+                <hgroup>
+                    <h2>Order Summary</h2>
+                    <h3>Thank you for ordering from Epic Eats!</h3>
+                </hgroup>
+                <p>We appreciate your order. Here is a summary of the items you selected:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Burger</td>
+                            <td>2</td>
+                            <td>₹1600</td>
+                        </tr>
+                        <tr>
+                            <td>Fries</td>
+                            <td>1</td>
+                            <td>₹320</td>
+                        </tr>
+                        <tr>
+                            <td>Fruit Smoothie</td>
+                            <td>2</td>
+                            <td>₹1120</td>
+                        </tr>
+                        <tr>
+                            <td>Chocolate Cake</td>
+                            <td>1</td>
+                            <td>₹480</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="2">Total</th>
+                            <th>₹3520</th>
+                        </tr>
+                    </tfoot>
+                </table>
+                <p>Your order will be delivered to you shortly. Enjoy your meal!</p>
+            </section>
         </div>
-
-        <!-- Veg Burger Section -->
-        <h2>Veg Burgers</h2>
-        <div class="form-group">
-            <img src="images/veg-burger.jpg" alt="Veg Burgers" class="category-img">
-            <label>Select Veg Burger Types and Quantity:</label>
-            <label>Aloo Tikki Burger</label>
-            <input type="number" id="alooTikkiBurgerQty" min="0" value="0">
-            <!-- ... other burger items -->
-        </div>
-
-        <!-- Other sections similar to above -->
-
-        <!-- Generate Bill Button -->
-        <button type="button" onclick="generateBill()">Generate Bill</button>
-
-        <!-- Bill Summary Section -->
-        <div id="billSummary" class="summary"></div>
-    </div>
-
-    <script src="scripts.js"></script>
+    </main>
+    <footer class="container">
+        <small><a href="#">Privacy Policy</a> • <a href="#">Terms of Service</a></small>
+    </footer>
 </body>
 </html>
