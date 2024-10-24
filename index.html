@@ -5,12 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Epic Eats - Home</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Header Section -->
     <header>
-        <nav>
-            <h1>Epic Eats</h1>
-            <ul>
+        <nav class="navbar">
+            <div class="logo">
+                <h1>Epic Eats</h1>
+            </div>
+            <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="order.html">Order Now</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -18,25 +24,36 @@
         </nav>
     </header>
 
-    <main>
-        <!-- Center Image -->
-        <section class="center-image">
-            <img src="https://img.freepik.com/free-photo/top-view-tasty-salad-with-seasonings-grey-health-salad-food-diet_140725-123755.jpg?t=st=1729771160~exp=1729774760~hmac=dffa657c5bafa1147e58ebceaf0d3e695be714897d4d3e3462185b3e86f97b90&w=900" alt="Epic Salad" />
-        </section>
+    <!-- Hero Section with Main Image and Overlay -->
+    <section class="hero-section">
+        <div class="hero-overlay">
+            <div class="hero-text">
+                <h2>Welcome to Epic Eats</h2>
+                <p>Fresh Ingredients, Delicious Dishes</p>
+                <a href="order.html" class="btn">Order Now</a>
+            </div>
+        </div>
+    </section>
 
-        <!-- Bottom Rectangle Images -->
-        <section class="bottom-images">
-            <div class="bottom-image">
+    <!-- Bottom Image Grid -->
+    <section class="menu-preview">
+        <h2>Our Top Dishes</h2>
+        <div class="image-grid">
+            <div class="image-card">
                 <img src="https://tableo.com/wp-content/uploads/Ceviche-e1716978196584.webp" alt="Ceviche">
+                <h3>Ceviche</h3>
             </div>
-            <div class="bottom-image">
+            <div class="image-card">
                 <img src="https://lh6.googleusercontent.com/Do6DtXylFh6Hud7cm94kt2CtlKXh7DrNT4vO8KF7E2bl0W9pxhiLMxCo8NTp72CjoTeewywDwc4Aqekb7XCNJmhD2Qc2rjz4rJ_aO9ljfHHa2Y9Tk9SMvWWLpVtn0iv8sTi8k0znPGZNIAn_kGS03h8" alt="Another Dish">
+                <h3>Grilled Chicken</h3>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
+    <!-- Footer -->
     <footer>
         <p>&copy; 2024 Epic Eats. All Rights Reserved.</p>
     </footer>
+
 </body>
 </html>
