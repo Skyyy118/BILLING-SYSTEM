@@ -1,4 +1,4 @@
-/* Reset basic margin/padding */
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -6,76 +6,104 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: #f8f8f8;
-    text-align: center;
+    color: #333;
 }
 
-/* Header */
+/* Navbar Styling */
 header {
-    background-color: #ffcc00;
+    position: fixed;
+    width: 100%;
+    background-color: rgba(255, 204, 0, 0.9);
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 20px;
 }
 
-header h1 {
+.logo h1 {
     font-size: 2.5em;
     color: #333;
 }
 
-nav ul {
-    list-style-type: none;
-    margin: 10px 0;
+.nav-links {
+    list-style: none;
 }
 
-nav ul li {
+.nav-links li {
     display: inline;
-    margin: 0 15px;
+    margin-left: 20px;
 }
 
-nav ul li a {
+.nav-links a {
     text-decoration: none;
-    color: #333;
     font-size: 1.2em;
+    color: #333;
+    transition: color 0.3s ease;
 }
 
-nav ul li a:hover {
+.nav-links a:hover {
     color: #ff9900;
 }
 
-/* Center Image */
-.center-image img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 30px auto;
-    border-radius: 15px;
+/* Hero Section with Overlay */
+.hero-section {
+    position: relative;
+    background-image: url('https://img.freepik.com/free-photo/top-view-tasty-salad-with-seasonings-grey-health-salad-food-diet_140725-123755.jpg?t=st=1729771160~exp=1729774760~hmac=dffa657c5bafa1147e58ebceaf0d3e695be714897d4d3e3462185b3e86f97b90&w=900');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
 }
 
-/* Bottom Images */
-.bottom-images {
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
     display: flex;
-    justify-content: space-around;
-    margin-top: 40px;
+    justify-content: center;
+    align-items: center;
 }
 
-.bottom-image {
-    width: 45%;
-}
-
-.bottom-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
-
-/* Footer */
-footer {
-    margin-top: 50px;
-    background-color: #333;
+.hero-text {
+    text-align: center;
     color: white;
-    padding: 20px;
 }
 
-footer p {
-    font-size: 1em;
+.hero-text h2 {
+    font-size: 3em;
+    margin-bottom: 20px;
 }
+
+.hero-text p {
+    font-size: 1.5em;
+    margin-bottom: 40px;
+}
+
+.btn {
+    padding: 10px 30px;
+    background-color: #ffcc00;
+    color: #333;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #ff9900;
+}
+
+/* Menu Preview Section */
+.menu-preview {
+    margin-top: 60px;
+   
